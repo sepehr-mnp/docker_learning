@@ -1,0 +1,70 @@
+https://youtu.be/pg19Z8LL06w?si=CTeBpPujzqs-eDqE
+
+docker just vertualizes the application layer of the OS but VM vertualizes the kernel too
+
+Doker is much smaller and lighter then VM
+
+Docker cannot run on any OS(not directley)
+
+docker image:
+contains: source code, environment configuration , environment variables 
+application layer of OS 
+and services needed
+all of them are in the docker image
+
+docker container:
+running instance of an image
+we can have multiple containers from one image
+
+$ docker images
+REPOSITORY               TAG       IMAGE ID       CREATED       SIZE
+nginx                    latest    e4720093a3c1   4 days ago    187MB
+project-broker-service   latest    7dddaa45b429   2 weeks ago   14.9MB
+<none>                   <none>    090bd1553a38   2 weeks ago   14.9MB
+
+shows images available
+
+$ docker ps
+CONTAINER ID   IMAGE                    COMMAND            CREATED       STATUS          PORTS                  NAMES
+ccee900713e8   project-broker-service   "/app/brokerApp"   2 weeks ago   Up 35 seconds   0.0.0.0:8080->80/tcp   project-broker-service-1
+
+this shows containers
+
+dokcer registries:
+a storage and distribution system for docker images
+
+docker hub:
+biggest official docker registry
+
+$ docker pull nginx
+download an image from docker hub
+this command can get argument of docker registry name but now bcz we wanted to download from docker hub and docker hub is the default, we didn't specify anything
+
+$ dokcer run nginx[:version]
+to run an image on a container
+you can specify the version if needed
+
+after running if you run docker ps, it will show the containers:
+docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS          PORTS
+NAMES
+22211127a695   nginx                    "/docker-entrypoint.…"   8 seconds ago   Up 7 seconds    80/tcp
+busy_kowalevski
+ccee900713e8   project-broker-service   "/app/brokerApp"         2 weeks ago     Up 20 minutes   0.0.0.0:8080->80/tcp   project-broker-service-1s
+(names are generated automatically if we do not specify it)
+
+$ docker logs CONTAINER_ID
+gives the logs and prints of that application Id(even after the execution was finished)
+
+# to access the container, we need to expose the port bcz currently it is only acceessible inside the container
+
+$ docker stop CONTAINER_ID
+it stops the container with the given containerId
+
+$ docker run -d -p 9000:80 nginx
+this exposes the 80 port of the container to teh public and lets you access it via port 9000
+
+now we can see the mapping:
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                  NAMES
+cefbdc4c7290   nginx     "/docker-entrypoint.…"   21 seconds ago   Up 20 seconds   0.0.0.0:9000->80/tcp   priceless_wright
