@@ -68,3 +68,12 @@ now we can see the mapping:
 $ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                  NAMES
 cefbdc4c7290   nginx     "/docker-entrypoint.…"   21 seconds ago   Up 20 seconds   0.0.0.0:9000->80/tcp   priceless_wright
+
+# "$ docker run", creates new container every time, so if we run "$ docker ps -a", it shows lots of containers with the same discriptions that i run multiple times
+
+$ docker start CONTAINER_ID
+it starts the container with the given containerId
+(you can use container name instead
+
+ $ docker run --name web-app -d -p 9000:80 nginx
+now it gives the container a name
