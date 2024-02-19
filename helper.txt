@@ -77,3 +77,9 @@ it starts the container with the given containerId
 
  $ docker run --name web-app -d -p 9000:80 nginx
 now it gives the container a name
+
+$ docker build -t image-name:imageTag(ex: 1.0.0) .
+that . is docker file location
+
+$ docker run --name container-name -d -p 9000:3000 image-name:1.0.0
+for running the image created
