@@ -54,3 +54,9 @@ $ docker-compose -f docker-compose.yaml stop
 
 $ docker-compose -f docker-compose.yaml start
 start after it was stoped
+
+
+
+?# learn env variables later, docker-compose-v3.yaml
+?# password is a little misguided(so it dioesnt work after v0)
+?# doesn't know use of private repo
