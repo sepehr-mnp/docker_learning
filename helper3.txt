@@ -24,3 +24,33 @@ $ docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONF
 
 # in order to see basic auth of the mongo database, log the mongo-express container
 mongo express needs mongodb to run, so they both are running if you can use mongo-express
+
+
+prj03 -with compose
+basically a file that stores "docker run" commands of containers that are in the same network
+
+$ docker network rm mongo-network
+# removes the previously created docker network
+
+
+$ docker-compose -f docker-compose.yaml up
+# to start the docker compose file
+ docker-compose.yaml is the file name
+  "up" is needed
+ if we dont give name to it, it will generate smth like "{name of the directory of the project}_default" and containers will be { {name of the directory of the project}_{contain name}_{index of usage of that container}
+
+> Ctrl + C
+for stopping all the containers of the docker compose
+
+# we can stop those containers by giving the containerID and "docker stop {containerID}" command
+
+
+$ docker-compose -f docker-compose.yaml down
+stops the containers in the docker-compose file and removes them
+
+
+# if you delete container, datas are gone so in order to not remove the containers and only stop them, use the following command:
+$ docker-compose -f docker-compose.yaml stop
+
+$ docker-compose -f docker-compose.yaml start
+start after it was stoped
